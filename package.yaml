@@ -1,0 +1,54 @@
+name:                streamlytest
+version:             0.1.0.0
+github:              "Abhiroop/streamlytest"
+license:             BSD3
+author:              "Abhiroop Sarkar"
+maintainer:          "asiamgenius@gmail.com"
+copyright:           "Copyright (c) 2017-2018 Abhiroop Sarkar"
+
+extra-source-files:
+- README.md
+- ChangeLog.md
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            Data Structures
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the README on Github at <https://github.com/Abhiroop/streamlytest#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+- GLUT
+- streamly
+
+library:
+  source-dirs: src
+
+executables:
+  streamlytest-exe:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N2
+    - -O2
+    dependencies:
+    - streamlytest
+    - parallel
+    - streamly
+    - GLUT
+
+tests:
+  streamlytest-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - streamlytest
